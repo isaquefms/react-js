@@ -11,29 +11,30 @@ const Form = () => {
     const [name, setName] = useState('')
     const [role, setRole] = useState('')
     const [image, setImage] = useState('')
+    const [team, setTeam] = useState('')
 
     const onSave = (event) => {
         event.preventDefault()
-        console.log('Salvou!', name, role, image)
+        console.log('Salvou!', name, role, image, team)
     }
 
     return (
         <section className='form'>
             <form onSubmit={onSave}>
                 <h2>Preencha os dados para criar o card do colaborador</h2>
-                <TextField 
+                <TextField
                     required={true}
                     label="Nome"
-                    placeholder="Digite seu nome" 
+                    placeholder="Digite seu nome"
                     value={name}
                     setValue={setName}
                 />
-                <TextField 
+                <TextField
                     required={true}
                     label="Cargo"
                     placeholder="Digite seu cargo"
                     value={role}
-                    setValue={setRole}    
+                    setValue={setRole}
                 />
                 <TextField
                     label="Imagem"
@@ -41,7 +42,12 @@ const Form = () => {
                     value={image}
                     setValue={setImage}
                 />
-                <Dropdown required={true} label="Time" items={items}/>
+                <Dropdown
+                    required={true}
+                    label="Time"
+                    items={items}
+                    value={team}
+                    onChange={value => setTeam(value)} />
                 <Button> Enviar </Button>
             </form>
         </section>
